@@ -231,21 +231,7 @@
         <p>1.安装JDK</p>
 <p>1.1 安装rzsz<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src // 安装到 /usr/local/src</span><br><span class="line">yum update -y  </span><br><span class="line">yum list lrzsz*  </span><br><span class="line">yum install lrzsz.x86_64 -y</span><br></pre></td></tr></table></figure></p>
 <p>1.2 安装JDK<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum list java*  </span><br><span class="line">yum install java-1.8.0-openjdk* -y  </span><br><span class="line">path之类会自动设置好</span><br></pre></td></tr></table></figure></p>
-<p>2.安装MySQL</p>
-<p>2.1 安装MySQL<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum list mysql*  </span><br><span class="line">yum install mysql-server* -y  </span><br><span class="line"># 修改 /etc/my.cnf</span><br><span class="line">#设置数据库默认编码以及存储位置,如果可能，优化内存配置 </span><br><span class="line">vi /etc/my.cnf</span><br></pre></td></tr></table></figure></p>
-<p>2.2 MySQL配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]  </span><br><span class="line"># datadir=/var/lib/mysql  </span><br><span class="line">datadir=/usr/local/renfufei/mysql_data  </span><br><span class="line">socket=/var/lib/mysql/mysql.sock  </span><br><span class="line">user=mysql  </span><br><span class="line"># Disabling symbolic-links is recommended to prevent assorted security risks  </span><br><span class="line">symbolic-links=0  </span><br><span class="line">default-character-set=utf8  </span><br><span class="line">[mysqld_safe]  </span><br><span class="line">log-error=/var/log/mysqld.log  </span><br><span class="line">pid-file=/var/run/mysqld/mysqld.pid  </span><br><span class="line">[mysql]  </span><br><span class="line">default-character-set=utf8</span><br></pre></td></tr></table></figure></p>
-<p>3.安装tomcat</p>
-<p>3.1 下载tomcat压缩包</p>
-<p>3.2 安装tomcat<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/src // 安装到 /usr/local/src</span><br><span class="line">tar -zxvf apache-tomcat-8.0.33.tar.gz  // 解压压缩包</span><br><span class="line">rm -rf apache-tomcat-8.0.33.tar.gz  // 删除压缩包</span><br><span class="line">mv apache-tomcat-8.0.33.tar.gz  tomcat  // 重命名</span><br></pre></td></tr></table></figure></p>
-<p>3.3 配置环境变量</p>
-<p>修改 /etc/profile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br></pre></td></tr></table></figure></p>
-<p>把如下内容粘到文档最后<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TOMCAT_HOME=/usr/local/tomcat</span><br><span class="line">export JAVA_HOME CLASSPATH PATH TOMCAT_HOME</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile  //环镜变量立即生效</span><br></pre></td></tr></table></figure>
-<p>3.4 启动测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/tomcat/bin</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure></p>
-<p>检查端口8080，9009是否开启<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -tnl</span><br></pre></td></tr></table></figure></p>
-<p>测式浏览器输入：<a href="http://ip:8080" target="_blank" rel="external">http://ip:8080</a> //如果面功打开tomcat首页(对，就是那只猫)说明测试成功。<br>不成功的话，就屏蔽下防火墙<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">iptables -F</span><br><span class="line">service iptables save</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">参考：http://blog.sina.com.cn/s/blog_48ab118d0102voaj.html</span><br><span class="line">      http://blog.csdn.net/renfufei/article/details/9733367</span><br></pre></td></tr></table></figure>
-
+<p>2.安装MySQL<br>
       
     </div>
     
@@ -254,6 +240,10 @@
       
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/04/08/install jdk+mysql+tomcat/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
