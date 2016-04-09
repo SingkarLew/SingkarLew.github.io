@@ -16,16 +16,16 @@
 <meta property="og:description" content="12说来也惭愧，我是最近开始用github，小白一个，昨天研究了一个下午。终于可以上传了，所以今天写点，一来分享是自己的一些经验，二来也是做个记录，万一哪天又不记得了:)废话不多说，直接来，这次主要介绍的是windows下的安装和使用。
 
 建立仓库12第一步的话看一般的提示就知道了，在github新建一个repository（谷歌可以解决），都是可视化的界面操作，所以难度不大。或者看这里：http">
-<meta property="og:image" content="http://7xsqd0.com2.z0.glb.clouddn.com/ithub%E5%AE%9E%E7%94%A8_1.png">
+<meta property="og:image" content="http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_1.png">
 <meta property="og:image" content="http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_2.png">
-<meta property="og:image" content="http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_2.png">
-<meta property="og:updated_time" content="2016-04-09T06:55:08.485Z">
+<meta property="og:image" content="http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_3.png">
+<meta property="og:updated_time" content="2016-04-09T06:58:03.994Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于初学者上传文件到github的方法">
 <meta name="twitter:description" content="12说来也惭愧，我是最近开始用github，小白一个，昨天研究了一个下午。终于可以上传了，所以今天写点，一来分享是自己的一些经验，二来也是做个记录，万一哪天又不记得了:)废话不多说，直接来，这次主要介绍的是windows下的安装和使用。
 
 建立仓库12第一步的话看一般的提示就知道了，在github新建一个repository（谷歌可以解决），都是可视化的界面操作，所以难度不大。或者看这里：http">
-<meta name="twitter:image" content="http://7xsqd0.com2.z0.glb.clouddn.com/ithub%E5%AE%9E%E7%94%A8_1.png">
+<meta name="twitter:image" content="http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_1.png">
   
     <link rel="alternative" href="/atom.xml" title="Chuck&#39;s Blog" type="application/atom+xml">
   
@@ -253,7 +253,7 @@
 <li>建立仓库<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一步的话看一般的提示就知道了，在github新建一个repository（谷歌可以解决），都是可视化的界面操作，所以难度不大。或者看这里：https://help.github.com/articles/create-a-repo 这是官方help，虽然是英文的，但是基本都是图和代码，所以很容易读懂。</span><br><span class="line">在github首页的右上角，点击红框中的Create New Repo。</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><img src="http://7xsqd0.com2.z0.glb.clouddn.com/ithub%E5%AE%9E%E7%94%A8_1.png" alt="repository">     </p>
+<p><img src="http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_1.png" alt="repository">     </p>
 <a id="more"></a>
 <p>进入新建的仓库界面</p>
 <p><img src="http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_2.png" alt="new_repository"></p>
@@ -265,7 +265,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
 <p>正确的结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;github.com,207.97.227.239&apos; (RSA) to the list of known hosts.</span><br><span class="line">Hi findingsea! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p>
 <p>会有一个Warnning，不用管。<br>接下来对酷4进行clone，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/findingsea/myRepoForBlog.git</span><br></pre></td></tr></table></figure></p>
-<p>上面的地址可以在如下界面找到：<br><img src="http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_2.png" alt="new_clone"><br>clone成功如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Cloning into &apos;myRepoForBlog&apos;...</span><br><span class="line">Warning: Permanently added &apos;github.com,207.97.227.239&apos; (RSA) to the list of known hosts.</span><br><span class="line">remote: Counting objects: 3, done.</span><br><span class="line">remote: Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">Receiving objects: 100% (3/3), done.</span><br></pre></td></tr></table></figure></p>
+<p>上面的地址可以在如下界面找到：<br><img src="http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_3.png" alt="new_clone"><br>clone成功如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Cloning into &apos;myRepoForBlog&apos;...</span><br><span class="line">Warning: Permanently added &apos;github.com,207.97.227.239&apos; (RSA) to the list of known hosts.</span><br><span class="line">remote: Counting objects: 3, done.</span><br><span class="line">remote: Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">Receiving objects: 100% (3/3), done.</span><br></pre></td></tr></table></figure></p>
 <ol>
 <li>上传README.md文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这个时候，我们的GitHub文件夹下就多了一个myRepoForBlog文件夹，进入文件夹目录，对仓库进行初始化，如果我们之前没有勾选创建README，则要先创建README.md文件，不然上传文件会报错。如果在第一步就勾选过了 ![README](http://7xsqd0.com2.z0.glb.clouddn.com/github%E5%AE%9E%E7%94%A8_4.png)则可以直接进入第四步。</span><br></pre></td></tr></table></figure>
 </li>
