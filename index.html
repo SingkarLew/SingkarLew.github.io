@@ -295,32 +295,7 @@
 <li>建立仓库<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">第一步的话看一般的提示就知道了，在github新建一个repository（谷歌可以解决），都是可视化的界面操作，所以难度不大。或者看这里：https://help.github.com/articles/create-a-repo 这是官方help，虽然是英文的，但是基本都是图和代码，所以很容易读懂。</span><br><span class="line">在github首页的右上角，点击红框中的Create New Repo。</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>pic1 url:</p>
-<p>进入新建的仓库界面</p>
-<p>pic2 url:</p>
-<p>填一下仓库名称，Initialize this repository with a README是可选的，不过本人建议最好选上，可以在后面省一个步骤。填好之后，点Create repository就行了。</p>
-<ol>
-<li>克隆仓库<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">第二步开始就基本进入命令行模式了，不过要先从github上下载命令行工具。[下载地址](http://windows.github.com/) </span><br><span class="line">　　然后进行简单的安装之后，会在桌面上创建两个图标，GitHub和Git Shell，GitHub是图形界面，Git Shell是命令行模式，而且默认的Git仓库是建在C盘的，个人建议要把路径重设下。</span><br><span class="line">　　点开Git Shell，进入命令行。首先我们先要把GitHub上的我们新建的仓库clone下来，为了演示，我在GitHub上新建了一个名称为myRepoForBlog的git。</span><br><span class="line">　　在初始化版本库之前，先要确认认证的公钥是否正确，如下：</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure>
-<p>正确的结果如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;github.com,207.97.227.239&apos; (RSA) to the list of known hosts.</span><br><span class="line">　　Hi findingsea! You&apos;ve successfully authenticated, but GitHub does not provide shell access.</span><br></pre></td></tr></table></figure></p>
-<p>会有一个Warnning，不用管。<br>接下来对酷4进行clone，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/findingsea/myRepoForBlog.git</span><br></pre></td></tr></table></figure></p>
-<p>上面的地址可以在如下界面找到：<br>pic3 url<br>clone成功如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Cloning into &apos;myRepoForBlog&apos;...</span><br><span class="line">　　Warning: Permanently added &apos;github.com,207.97.227.239&apos; (RSA) to the list of known hosts.</span><br><span class="line">　　remote: Counting objects: 3, done.</span><br><span class="line">　　remote: Total 3 (delta 0), reused 0 (delta 0)</span><br><span class="line">　　Receiving objects: 100% (3/3), done.</span><br></pre></td></tr></table></figure></p>
-<ol>
-<li>上传README.md文件<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这个时候，我们的GitHub文件夹下就多了一个myRepoForBlog文件夹，进入文件夹目录，对仓库进行初始化，如果我们之前没有勾选创建README，则要先创建README.md文件，不然上传文件会报错。如果在第一步就勾选过了 pic4 url则可以直接进入第四步。</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git init</span><br><span class="line">　　touch README.md</span><br><span class="line">　　git add README.md</span><br><span class="line">　　git commit -m &apos;first_commit&apos;</span><br><span class="line">　　git remote add origin https://github.com/findingsea/myRepoForBlog.git</span><br><span class="line">　　git push origin master</span><br></pre></td></tr></table></figure>
-<p>4.push文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建完README.md后，就可以push了，代码类似。</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">　　git commit -m &apos;first_commit&apos;</span><br><span class="line">　　git remote add origin https://github.com/findingsea/myRepoForBlog.git</span><br><span class="line">　　git push origin master</span><br></pre></td></tr></table></figure>
-<p>如果执行git remote add origin <a href="https://github.com/findingsea/myRepoForBlog.git，出现错误：" target="_blank" rel="external">https://github.com/findingsea/myRepoForBlog.git，出现错误：</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">fatal: remote origin already exists</span><br></pre></td></tr></table></figure></p>
-<p>则执行以下语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote rm origin</span><br></pre></td></tr></table></figure></p>
-<p>再往后执行git remote add origin <a href="https://github.com/findingsea/myRepoForBlog.git" target="_blank" rel="external">https://github.com/findingsea/myRepoForBlog.git</a> 即可。</p>
-<p>在执行git push origin master时，报错：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">error:failed to push som refs to.......</span><br></pre></td></tr></table></figure></p>
-<p>则执行以下语句：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin master</span><br></pre></td></tr></table></figure></p>
-<p>先把远程服务器github上面的文件拉先来，再push 上去。<br>5.结束<br>再次要强调这篇文章主要是对初学者的，也就我这种github菜鸟的。<br>最后感谢那些无私分享自己经验和知识的博主们。<br>以下是本文的参考资料：<br>　  git/github学习笔记<br>    Git/Github使用方法小记<br>    在GitHub上分享和展示你的代码</p>
-
+<p>pic1 url:<br>
       
     </div>
     
@@ -333,6 +308,10 @@
 
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2015/12/27/关于初学者上传文件到github的方法/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
