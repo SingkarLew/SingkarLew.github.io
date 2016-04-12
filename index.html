@@ -116,7 +116,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/JavaWeb/" style="font-size: 10px;">JavaWeb</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/实用/" style="font-size: 20px;">实用</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/环境配置/" style="font-size: 10px;">环境配置</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
+						<a href="/tags/JavaWeb/" style="font-size: 10px;">JavaWeb</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/PHP/" style="font-size: 10px;">PHP</a> <a href="/tags/Ubuntu/" style="font-size: 10px;">Ubuntu</a> <a href="/tags/VMware/" style="font-size: 10px;">VMware</a> <a href="/tags/android/" style="font-size: 10px;">android</a> <a href="/tags/github/" style="font-size: 10px;">github</a> <a href="/tags/学习/" style="font-size: 15px;">学习</a> <a href="/tags/实用/" style="font-size: 20px;">实用</a> <a href="/tags/技术/" style="font-size: 10px;">技术</a> <a href="/tags/教程/" style="font-size: 10px;">教程</a> <a href="/tags/环境配置/" style="font-size: 10px;">环境配置</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/语言/" style="font-size: 10px;">语言</a> <a href="/tags/配置/" style="font-size: 10px;">配置</a>
 					</div>
 				</section>
 				
@@ -201,6 +201,137 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-VMware下Ubuntu与宿主Windows共享文件夹及出现问题的解决" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/12/VMware下Ubuntu与宿主Windows共享文件夹及出现问题的解决/" class="article-date">
+  	<time datetime="2016-04-12T05:05:00.000Z" itemprop="datePublished">2016-04-12</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/12/VMware下Ubuntu与宿主Windows共享文件夹及出现问题的解决/">VMware下Ubuntu与宿主Windows共享文件夹</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>在VMware中给虚拟机设置共享目录，鼠标光标对着要共享的虚拟机右键setting-&gt;options-&gt;shared Folders-&gt;Always enabled-&gt;confirm</p>
+</li>
+<li><p>执行mount命令，之后mnt/hgfs里就可以看到前面设置的共享目录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t vmhgfs .host:/ /mnt/hgfs</span><br><span class="line">dir</span><br><span class="line">cd ..</span><br><span class="line">cd ..</span><br><span class="line">cd mnt</span><br><span class="line">dir</span><br><span class="line">cd hgfs</span><br><span class="line">dir</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>出现问题，/mnt/hgfs 下没有共享文件夹<br>百度上很多提到的解决办法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install intall open-vm-dkms</span><br><span class="line">sudo mount -t vmhgfs .host:/ /mnt/hgfs</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>验证后，此法无效，这应该是应对Ubuntu 14.04以前版本的。</p>
+<p>原因是虚拟机版本和vmwaretools工具的版本不匹配，重新安装tools就可以了。<br>3.1 先卸载open-vm-dkms和open-vm-tools并且删除配置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get autoremove open-vm-dkms open-vm-tools --purge</span><br></pre></td></tr></table></figure></p>
+<p>3.2 重新安装VMware Tools<br>3.2.1 虚拟机点击VM-&gt;Reinstall vmware tools就弹出有VMware Tools-xxx.tar.gz，把这个文件复制到其他地方<br>3.2.2解压<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxf vmware-linux-tools.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>3.2.3 得到vmware-tools-distrib，执行该目录下的 vmware-install.pl<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd vmware-tools-distrib</span><br><span class="line">./vmware-install.pl</span><br><span class="line">然后根据提示一直yes。看清楚提示，给的推荐是[no]的时候特别注意，一般还得yes。</span><br></pre></td></tr></table></figure></p>
+<p>最后会出现<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Enjoy——the VMware team</span><br></pre></td></tr></table></figure></p>
+<p>安装成功。<br>现在在/mnt下可以看到hgfs了。</p>
+<p>补充：<br>vmtools设置共享文件夹在linux的mnt/hgfs下却看不到文件夹的问题</p>
+<p>这个应该是版本不符合的原因，更新了系统后发现共享文件不见了…<br>原因是更新了系统后，使用了新的内核引导，导致无法使用VM-tools的共享功能。<br>解决方法：<br>在ubuntu下运行虚拟机配置工具重新生成系统initrd文件即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vmware-config-tools.pl</span><br><span class="line">然后按照步骤，一步步选择即可。</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux/">Linux</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ubuntu/">Ubuntu</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/VMware/">VMware</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟机/">虚拟机</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-php_learn_01" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/04/11/php_learn_01/" class="article-date">
+  	<time datetime="2016-04-11T08:03:00.000Z" itemprop="datePublished">2016-04-11</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/04/11/php_learn_01/">PHP成长之路</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Good good study,day day up!</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PHP/">PHP</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/学习/">学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/技术/">技术</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/语言/">语言</a></li></ul>
+	</div>
+
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-note" class="article article-type-post" itemscope itemprop="blogPost">
   
