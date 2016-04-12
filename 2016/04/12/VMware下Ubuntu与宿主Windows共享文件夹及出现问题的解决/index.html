@@ -9,7 +9,10 @@
   <meta name="description" content="在VMware中给虚拟机设置共享目录，鼠标光标对着要共享的虚拟机右键setting-&amp;gt;options-&amp;gt;shared Folders-&amp;gt;Always enabled-&amp;gt;confirm
 
 执行mount命令，之后mnt/hgfs里就可以看到前面设置的共享目录
-12345678sudo mount -t vmhgfs .host:/ /mnt/hgfsdircd ..cd .">
+123cd /mnt/hgfsdircd xxx
+
+
+此时可以创建一个软链接，方便读写共享文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VMware下Ubuntu与宿主Windows共享文件夹">
 <meta property="og:url" content="http://singkarlew.xyz/2016/04/12/VMware下Ubuntu与宿主Windows共享文件夹及出现问题的解决/index.html">
@@ -17,14 +20,20 @@
 <meta property="og:description" content="在VMware中给虚拟机设置共享目录，鼠标光标对着要共享的虚拟机右键setting-&amp;gt;options-&amp;gt;shared Folders-&amp;gt;Always enabled-&amp;gt;confirm
 
 执行mount命令，之后mnt/hgfs里就可以看到前面设置的共享目录
-12345678sudo mount -t vmhgfs .host:/ /mnt/hgfsdircd ..cd .">
-<meta property="og:updated_time" content="2016-04-12T18:14:00.779Z">
+123cd /mnt/hgfsdircd xxx
+
+
+此时可以创建一个软链接，方便读写共享文件">
+<meta property="og:updated_time" content="2016-04-12T18:21:55.420Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VMware下Ubuntu与宿主Windows共享文件夹">
 <meta name="twitter:description" content="在VMware中给虚拟机设置共享目录，鼠标光标对着要共享的虚拟机右键setting-&amp;gt;options-&amp;gt;shared Folders-&amp;gt;Always enabled-&amp;gt;confirm
 
 执行mount命令，之后mnt/hgfs里就可以看到前面设置的共享目录
-12345678sudo mount -t vmhgfs .host:/ /mnt/hgfsdircd ..cd .">
+123cd /mnt/hgfsdircd xxx
+
+
+此时可以创建一个软链接，方便读写共享文件">
   
     <link rel="alternative" href="/atom.xml" title="Chuck&#39;s Blog" type="application/atom+xml">
   
@@ -251,12 +260,12 @@
 <li><p>在VMware中给虚拟机设置共享目录，鼠标光标对着要共享的虚拟机右键setting-&gt;options-&gt;shared Folders-&gt;Always enabled-&gt;confirm</p>
 </li>
 <li><p>执行mount命令，之后mnt/hgfs里就可以看到前面设置的共享目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t vmhgfs .host:/ /mnt/hgfs</span><br><span class="line">dir</span><br><span class="line">cd ..</span><br><span class="line">cd ..</span><br><span class="line">cd mnt</span><br><span class="line">dir</span><br><span class="line">cd hgfs</span><br><span class="line">dir</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt/hgfs</span><br><span class="line">dir</span><br><span class="line">cd xxx</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<a id="more"></a>
+<p>此时可以创建一个软链接，方便读写共享文件<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln -s source(源地址) dest(目的地址)</span><br></pre></td></tr></table></figure></p>
 <ol>
-<li>出现问题，/mnt/hgfs 下没有共享文件夹<br>百度上很多提到的解决办法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install intall open-vm-dkms</span><br><span class="line">sudo mount -t vmhgfs .host:/ /mnt/hgfs</span><br></pre></td></tr></table></figure>
+<li>出现问题，/mnt/hgfs 下没有共享文件夹<br>百度上很多提到的解决办法<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install intall open-vm-dkms</span><br><span class="line">sudo mount -t vmhgfs .host:/ /mnt/hgfs</span><br><span class="line">dir</span><br><span class="line">cd ..</span><br><span class="line">cd ..</span><br><span class="line">cd mnt</span><br><span class="line">dir</span><br><span class="line">cd hgfs</span><br><span class="line">dir</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>验证后，此法无效，这应该是应对Ubuntu 14.04以前版本的。</p>

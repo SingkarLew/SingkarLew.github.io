@@ -232,9 +232,10 @@
 <li><p>在VMware中给虚拟机设置共享目录，鼠标光标对着要共享的虚拟机右键setting-&gt;options-&gt;shared Folders-&gt;Always enabled-&gt;confirm</p>
 </li>
 <li><p>执行mount命令，之后mnt/hgfs里就可以看到前面设置的共享目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo mount -t vmhgfs .host:/ /mnt/hgfs</span><br><span class="line">dir</span><br><span class="line">cd ..</span><br><span class="line">cd ..</span><br><span class="line">cd mnt</span><br><span class="line">dir</span><br><span class="line">cd hgfs</span><br><span class="line">dir</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd /mnt/hgfs</span><br><span class="line">dir</span><br><span class="line">cd xxx</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<p>此时可以创建一个软链接，方便读写共享文件<br>
       
     </div>
     
